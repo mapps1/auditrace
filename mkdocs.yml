@@ -1,0 +1,40 @@
+site_name: Auditrace
+site_description: Tamper-evident AI audit trails and compliance evidence workflows
+site_url: https://auditrace.github.io/auditrace
+repo_url: https://github.com/auditrace/auditrace
+repo_name: auditrace/auditrace
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Quickstart: quickstart.md
+  - Configuration: configuration.md
+  - Integrations:
+    - OpenAI: integrations/openai.md
+    - Anthropic: integrations/anthropic.md
+    - LiteLLM: integrations/litellm.md
+    - LangChain: integrations/langchain.md
+    - Generic: integrations/generic.md
+  - Compliance:
+    - EU AI Act: compliance/eu-ai-act.md
+    - SOC 2: compliance/soc2.md
+    - HIPAA: compliance/hipaa.md
+    - NIST AI RMF: compliance/nist-ai-rmf.md
+  - Storage:
+    - SQLite: storage/sqlite.md
+    - PostgreSQL: storage/postgres.md
+    - S3: storage/s3.md
+    - File: storage/file.md
+  - Changelog: changelog.md
+  - Contributing: contributing.md
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true

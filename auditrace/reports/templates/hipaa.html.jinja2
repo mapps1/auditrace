@@ -1,0 +1,49 @@
+{% extends 'base.html.jinja2' %}
+
+{% block framework_content %}
+<section>
+	<h2>HIPAA 164.312(b) Control Coverage</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Control</th>
+				<th>Description</th>
+				<th>Pass</th>
+				<th>Total</th>
+				<th>Coverage</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for control in payload.summary.controls %}
+			<tr>
+				<td>{{ control.control_id }}</td>
+				<td>{{ control.title }}</td>
+				<td>{{ control.pass_count }}</td>
+				<td>{{ control.total_count }}</td>
+				<td>{{ (control.coverage * 100)|round(1) }}%</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</section>
+
+<section>
+	<h2>Audit Control Narrative</h2>
+	<ul>
+		<li>Actor attribution and operation timestamps support activity examination.</li>
+		<li>Input and output hashes preserve privacy while proving evidence continuity.</li>
+		<li>Hash chaining and signatures support tamper-evident retention.</li>
+	</ul>
+</section>
+
+{% if payload.summary.findings %}
+<section>
+	<h2>Findings</h2>
+	<ul>
+		{% for finding in payload.summary.findings %}
+		<li>{{ finding }}</li>
+		{% endfor %}
+	</ul>
+</section>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,7 @@
+services:
+  postgres:
+    restart: unless-stopped
+  minio:
+    restart: unless-stopped
+  adminer:
+    restart: unless-stopped

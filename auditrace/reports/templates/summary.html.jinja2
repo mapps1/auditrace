@@ -1,0 +1,44 @@
+{% extends 'base.html.jinja2' %}
+
+{% block framework_content %}
+<section>
+	<h2>Cross-Framework Summary</h2>
+	<p><strong>Total findings:</strong> {{ payload.summary.total_findings }}</p>
+</section>
+
+{% for framework_name, item in payload.summary.frameworks.items() %}
+<section>
+	<h3>{{ framework_name }}</h3>
+	<table>
+		<thead>
+			<tr>
+				<th>Control</th>
+				<th>Description</th>
+				<th>Pass</th>
+				<th>Total</th>
+				<th>Coverage</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for control in item.controls %}
+			<tr>
+				<td>{{ control.control_id }}</td>
+				<td>{{ control.title }}</td>
+				<td>{{ control.pass_count }}</td>
+				<td>{{ control.total_count }}</td>
+				<td>{{ (control.coverage * 100)|round(1) }}%</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% if item.findings %}
+	<h4>Findings</h4>
+	<ul>
+		{% for finding in item.findings %}
+		<li>{{ finding }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+</section>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS audit_events (
+    id BIGSERIAL PRIMARY KEY,
+    event_id TEXT NOT NULL UNIQUE,
+    timestamp TIMESTAMPTZ NOT NULL,
+    payload JSONB NOT NULL
+);

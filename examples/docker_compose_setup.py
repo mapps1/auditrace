@@ -1,0 +1,1 @@
+"""Validate docker compose setup."""
